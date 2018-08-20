@@ -16,7 +16,7 @@ class Frame
 
 	public static function CreateTable($dbc)
 	{
-		$sql = "CREATE table comments
+		$sql = "CREATE table frame
 		(
 			id int auto_increment primary key,
 			source varchar(255) not null,

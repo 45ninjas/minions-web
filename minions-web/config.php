@@ -13,7 +13,10 @@ function DatabaseConnect()
 
 	$database = "minion";
 
-	return new PDO("mysql:host=$host;dbname=$database", $username, $password);
+	$dbc = new PDO("mysql:host=$host;dbname=$database", $username, $password);
+	$dbc->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	return $dbc;
+
 }
 
 ?>

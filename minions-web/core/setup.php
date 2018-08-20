@@ -89,25 +89,30 @@
 
 	function CreateDatabase($dbc)
 	{
-		Frame::CreateTable($dbc);
-		User::CreateTable($dbc);
-		Comment::CreateTable($dbc);
+		TryCreateTable('Frame', $dbc);
+		TryCreateTable('User', $dbc);
+		TryCreateTable('Comment', $dbc);
 	}
 	function TryCreateTable($class, $dbc)
 	{
-		$sql = "SELECT * from information_schema.tables where table_schema = DATABASE() and table_name = ? limit 1";
-
-		$statement = $dbc->prepare($sql);
-		$statement->execute([strtolower($class)]);
-
-		if($statement->fetch() != false)
+		$class = strtolower($class);
+		try
 		{
-			Message::Create("info", "The " . strtolower($class) . " table already exists");
+			$return = $dbc->query("SELECT 1 from $class limit 1");
+		}
+		catch (Exception $e)
+		{
+			$return = false;
+		}
+
+		if(!$return)
+		{
+			$class::CreateTable($dbc);
+			Message::Create("success", "Successfully created the '$class' table");
 		}
 		else
 		{
-			$class::CreateTable($dbc);
-			Message::Create("success", "Successfully created the " . strtolower($class) . " table");
+			Message::Create("info", "The '$class' table already exists");
 		}
 	}
 

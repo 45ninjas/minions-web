@@ -4,18 +4,18 @@ class User
 {
 	public $id;
 
-	public $source
+	public $source;
 
 	public $name;
 
 	public $contact;
 	public $discord;
 
-	public $votes
+	public $votes;
 
 	public static function CreateTable($dbc)
 	{
-		$sql = "CREATE table comments
+		$sql = "CREATE table user
 		(
 			id int auto_increment primary key,
 			source varchar(255) not null,
