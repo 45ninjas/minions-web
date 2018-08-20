@@ -4,6 +4,12 @@ define('WEB_ROOT', "/minions/");
 
 define('TITLE_FORMAT', "%title - %appName");
 
+define('ROUTES', array(
+	['view.php',				'',					0],
+	['view.php',				'([0-9]*)',			1],
+	['stats.php',				'stats',			0],
+	['admin-comments.php',		'admin/comments',	0]
+));
 
 function DatabaseConnect()
 {
