@@ -1,6 +1,6 @@
 <?php 
 define('APP_NAME', "Minions");
-define('WEB_ROOT', "/minions/");
+define('WEB_ROOT', "/pages/minions");
 
 define('TITLE_FORMAT', "%title - %appName");
 
@@ -14,7 +14,7 @@ define('ROUTES', array(
 function DatabaseConnect()
 {
 	$username = "minion";
-	$password = "";
+	$password = "BFKzXrgbDLf8LQh9";
 	$host = "localhost";
 
 	$database = "minion";

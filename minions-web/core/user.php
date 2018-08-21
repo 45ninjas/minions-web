@@ -36,6 +36,12 @@ class User
 
 	}
 
+	// Vote on a frame. Choices yes, no, not-sure
+	public function Vote($dbc, $frame, $choice)
+	{
+		return true;
+	}
+
 	// Vote for yes
 	public function VoteYes($dbc, $frame)
 	{

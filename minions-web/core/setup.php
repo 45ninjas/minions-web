@@ -87,6 +87,19 @@
 		}
 	}
 
+	// Write a finish message.
+	if($fail)
+		Message::Create("warning", "Setup completed (or failed) with errors");
+	else
+		Message::Create("success", "Setup completed successfully");
+
+	Message::ShowMessages("default", "setup");
+	?>
+</div>
+</body>
+</html>
+
+<?php
 	function CreateDatabase($dbc)
 	{
 		TryCreateTable('Frame', $dbc);
@@ -115,16 +128,4 @@
 			Message::Create("info", "The '$class' table already exists");
 		}
 	}
-
-
-	// Write a finish message.
-	if($fail)
-		Message::Create("warning", "Setup completed (or failed) with errors");
-	else
-		Message::Create("success", "Setup completed successfully");
-
-	Message::ShowMessages("default", "setup");
-	?>
-</div>
-</body>
-</html>
+?>

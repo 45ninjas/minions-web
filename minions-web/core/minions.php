@@ -16,8 +16,11 @@ class Minions
 	public static $page;
 	public static $arguments = array('title' => null);
 
+	public static $user;
+
 	public static function Init()
 	{
+		self::$dbc = DatabaseConnect();
 		// Get the user's session.
 		
 		// Get the page and arguments.
@@ -63,7 +66,15 @@ class Minions
 
 		// Remove the .php from the end of the page string.
 		$className = substr($page, 0, -4);
-		self::$page = new $className;
+
+		try
+		{
+			self::$page = new $className;
+		}
+		catch (Throwable $e)
+		{
+			Message::Create("exception", $e);
+		}
 	}
 
 	public static function Content($location)
@@ -92,6 +103,14 @@ class Minions
 			);
 			self::$arguments['title'] = str_replace(array_keys($args), array_values($args), TITLE_FORMAT);
 		}
+	}
+	public static function Asset($assetPath)
+	{
+		return WEB_ROOT . $assetPath;
+	}
+	public static function Path($path)
+	{
+		return WEB_ROOT . $path;
 	}
 }
 
