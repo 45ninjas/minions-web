@@ -71,6 +71,8 @@ class View implements IViewPart
 				Message::Create("error", "looks like there was an error processing your request");
 			}
 		}
+
+		Minions::AddToHead("<script type=\"text/javascript\" src=" . Minions::Asset("/js/viewer.js") . "></script>");
 	}
 	public function Content()
 	{

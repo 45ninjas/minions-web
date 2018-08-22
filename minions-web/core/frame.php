@@ -47,35 +47,23 @@ class Frame
 
 	public static function Get($dbc, $arguments)
 	{
+		// Get a single frame.
 		if(isset($arguments['index']))
 		{
 			$statement = $dbc->prepare("SELECT * from frame where id = ?");
 			$statement->execute([$arguments['index']]);
 
-			return $statement->fetchObject(__CLASS__);
+			$object = $statement->fetchObject(__CLASS__);
+
+			if($object === false)
+				return null;
+
+			return $object;
 		}
-
-		return null;
-	}
-	public static function Set($dbc, $comment)
-	{
-
-	}
-
-	// Vote for yes
-	public static function VoteYes($dbc, $frame)
-	{
-
-	}
-	// Vote for no
-	public static function VoteNo($dbc, $frame)
-	{
-
-	}
-	// Vote for skip
-	public static function VoteSkip($dbc, $frame)
-	{
-
+		
+		// Get all frames
+		$query = $dbc->query("SELECT id, votes from frame");
+		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 }
  ?>

@@ -18,6 +18,8 @@ class Minions
 
 	public static $user;
 
+	private static $headContent;
+
 	public static function Init()
 	{
 		self::$dbc = DatabaseConnect();
@@ -79,15 +81,30 @@ class Minions
 
 	public static function Content($location)
 	{
+		// execute the page.
 		if($location == "page")
 		{
 			self::$page->Content();
 			return;
 		}
+
+		// write the messages.
 		if($location == "messages")
 		{
 			Message::ShowMessages();
+			return;
 		}
+
+		// Write the head.
+		if($location == "head")
+		{
+			echo self::$headContent;
+			return;
+		}
+	}
+	public static function AddToHead($content)
+	{
+		self::$headContent .= PHP_EOL . "\t" . $content;
 	}
 	// Sets the title of the page. Force bypasses prefix and suffix from config.
 	public static function SetTitle($title, $force = false)
