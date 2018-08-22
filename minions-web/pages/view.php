@@ -78,17 +78,20 @@ class View implements IViewPart
 	{
 		?>
 		<div class="hero">
-			<img class="frame" src="<?=$this->frame->GetPicture("full")?>">
-			<p class="source" ><?=$this->frame->source ?> - <?=$this->frame->EstimateTime()?></p>
+			<picture id="frame" class="frame">
+				<source srcset="<?=$this->frame->GetPicture("low")?>" media="(max-width: 640px)">
+				<source srcset="<?=$this->frame->GetPicture("full")?>">
+				<img src="<?=$this->frame->GetPicture("full")?>">
+			</picture>
+			<p class="source" >Unknown - 00:00</p>
 		</div>
 		<div class="content">
-			<h2 class="question">Do you see minions?</h2>
-			<form class="buttons" method="POST" action="<?=Minions::Path("/$this->nextFrame")?>">
-				<input type="hidden" name="frame" value="<?=$this->nextFrame?>">
-				<button class="button" name="choice" value="yes" >👍 Yes</button>
-				<button class="button" name="choice" value="not sure" >🤔 Not Sure</button>
-				<button class="button" name="choice" value="no" >👎 No</button>
-			</form>
+			<h2 id="question" class="question">Do you see minions?</h2>
+			<div id="answers" class="buttons">
+				<button class="button" value="yes" >👍 Yes</button>
+				<button class="button" value="not sure" >🤔 Not Sure</button>
+				<button class="button" value="no" >👎 No</button>
+			</div>
 		</div>
 	<?php }
 }

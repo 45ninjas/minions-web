@@ -129,6 +129,27 @@ class Minions
 	{
 		return WEB_ROOT . $path;
 	}
+	public static function OfflineFrame($category = null, $index = null)
+	{
+		if($category == null && $index == null)
+			return self::OfflineFrame(array_rand(OFFLINE_FRAMES));
+
+		if(isset(OFFLINE_FRAMES[$category]) && $index == null)
+			return self::OfflineFrame($category, array_rand(OFFLINE_FRAMES[$category]));
+
+		if(isset(OFFLINE_FRAMES[$category]) && isset(OFFLINE_FRAMES[$category][$index]))
+		{
+			$id = OFFLINE_FRAMES[$category][$index];
+			$frame = new Frame();
+			$frame->id = $id;
+			$frame->source = "Despicable Me";
+			$paddedId = str_pad($id, 4, '0', STR_PAD_LEFT);
+			$frame->fname = "frame-$paddedId.jpg";
+			return $frame;
+		}
+		
+		throw new Exception("Invalid offline frame");
+	}
 }
 
 ?>

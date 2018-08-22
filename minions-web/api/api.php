@@ -69,16 +69,28 @@ class MinionsAPI
 
 	private function GetFrame($args)
 	{
-		$getArgs = array();
-		// If the first argument was provided, use it as an index
+		// If the first argument was provided, use it as an index and get one.
 		if(isset($args[0]))
 		{
 			$index = $this->SanatizeInt($args[0]);
-			$getArgs['index'] = $index;
+
+			$frame = Frame::Get($this->dbc, ['index' => $index]);
+
+			if(isset($frame) && $frame instanceof Frame)
+			{
+				$response = (array)$frame;
+
+				// Add the time to the response.
+				$response["time"] = $frame->EstimateTime();
+				
+				return $response;
+			}
+
+			return $frame;
 		}
 
-		// Get one or more frames.
-		return Frame::Get($this->dbc, $getArgs);
+		// Get ALL THE FRAMES
+		return Frame::Get($this->dbc, null);
 
 	}
 
