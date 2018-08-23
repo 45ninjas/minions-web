@@ -2,6 +2,7 @@ html, body
 {
 	font-family: sans-serif;
 	background-color: #211d1d;
+	background-image: url("../graphics/background-noise.png");
 }
 main
 {
@@ -131,10 +132,20 @@ main.container
 {
 	flex: 1;
 	margin: 0.5em;
-	transition: transform 0.1s;
-
+	transition: transform 0.25s, box-shadow 0.25s;
 }
 .buttons button:hover
 {
 	transform: translate(0, -3px);
+	box-shadow: 0 0 13px #e0e0e0;
+}
+
+.buttons .button .emoji
+{
+	font-size: 300%;
+	display: block;
+}
+.buttons .button
+{
+	font-weight: bold;
 }

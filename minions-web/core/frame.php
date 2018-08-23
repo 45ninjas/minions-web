@@ -60,9 +60,16 @@ class Frame
 
 			return $object;
 		}
+
+		// Get only the id in an array
+		if(isset($arguments['index only']) && $arguments['index only'] == true)
+		{
+			$query = $dbc->query("SELECT id from frame");
+			return $query->fetchAll(PDO::FETCH_COLUMN);
+		}
 		
 		// Get all frames
-		$query = $dbc->query("SELECT id, votes from frame");
+		$query = $dbc->query("SELECT id from frame");
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 }

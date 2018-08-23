@@ -14,63 +14,7 @@ class View implements IViewPart
 	{
 		Minions::SetTitle("View");
 
-		// Get the frame.
-		if(isset(Minions::$arguments['args'][0]))
-		{
-			$index = Minions::$arguments['args'][0];
-			Minions::SetTitle($index);
-			$this->frame = Frame::Get(Minions::$dbc, ['index' => $index]);
-
-			if($this->frame == false)
-			{
-				Message::Create("warning", "Frame '$index' does not exist.");
-			}
-		}
-
-		$query = Minions::$dbc->query("SELECT COUNT(id) FROM frame");
-
-		$this->totalFrames = $query->fetchColumn(0);
-		$this->nextFrame = random_int(0, $this->totalFrames);
-
-		// Has the user submitted a vote?
-		if(isset($_POST['frame']) || isset($_POST['choice']))
-		{
-			if(!isset($_POST['frame']) || !isset($_POST['choice']))
-			{
-				// Uh Oh, something went wrong.
-				var_dump($_POST);
-				throw new Exception("Error Processing Vote", 1);
-			}
-
-			// Clean up the index
-			$frame = filter_var($_POST['frame'], FILTER_SANITIZE_NUMBER_INT);
-
-			$choice = null;
-
-			switch ($_POST['choice'])
-			{
-				case 'yes':
-					$choice = "yes";
-					break;
-				case 'no':
-					$choice = "no";
-					break;
-				case 'not sure':
-					$choice = "not-sure";
-					break;
-				default:
-					throw new Exception("Error Processing Vote", 2);
-			}
-
-			if(Minions::$user->Vote(Minions::$dbc, $frame, $choice))
-			{
-				Message::Create("success", "Successfully voted $choice");
-			}
-			else
-			{
-				Message::Create("error", "looks like there was an error processing your request");
-			}
-		}
+		$this->frame = Minions::OfflineFrame("home");
 
 		Minions::AddToHead("<script type=\"text/javascript\" src=" . Minions::Asset("/js/viewer.js") . "></script>");
 	}
@@ -83,15 +27,29 @@ class View implements IViewPart
 				<source srcset="<?=$this->frame->GetPicture("full")?>">
 				<img src="<?=$this->frame->GetPicture("full")?>">
 			</picture>
-			<p class="source" >Unknown - 00:00</p>
+			<p id="source" class="source" ><?=$this->frame->source?> - <?=$this->frame->EstimateTime()?></p>
 		</div>
-		<div class="content">
+		<div id="questions" class="content" hidden>
 			<h2 id="question" class="question">Do you see minions?</h2>
 			<div id="answers" class="buttons">
-				<button class="button" value="yes" >👍 Yes</button>
-				<button class="button" value="not sure" >🤔 Not Sure</button>
-				<button class="button" value="no" >👎 No</button>
+				<button class="button" data-vote="yes"><span class="emoji">👍</span>Unquestionably</button>
+				<button class="button" data-vote="not sure"><span class="emoji">🤔</span>Not Obvious</button>
+				<button class="button" data-vote="no"><span class="emoji">👎</span>No</button>
 			</div>
+		</div>
+		<div id="info" class="content">
+			<h2 class="question">Help, Please?</h2>
+			<p>We are creating a bot that detects the <i>presence of minions</i> in a photo. This can be used to filter images based on the existence of minions.</p>
+
+			<div class="buttons start">
+				<button id="startButton" class="button"><span class="emoji">😆👍</span>lets do this</button>
+			</div>
+
+			<h2>Why?</h2>
+
+			<p>Whether you like minions or not we need your help to know what they look like. Yes, we know what a minion looks like, however computers don’t know what little yellow capsules of social media cancer with overalls and eyes looks like.</p>
+
+			<p>Our bot will be trained with the data gathered from this website. Our goal is to provide a service or solution to identify the presences of minions in an image. The end goal is to use this to automate the moderation of your 'minion memes only' chat room in discord or block minions in your FaceBook feed.</p>
 		</div>
 	<?php }
 }

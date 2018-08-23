@@ -1,13 +1,7 @@
 <?php
 define("APP_DIR", realpath(__DIR__ . "/.."));
 
-include_once APP_DIR . '/config.php';
-include_once APP_DIR . '/core/frame.php';
-include_once APP_DIR . '/core/comment.php';
-include_once APP_DIR . '/core/user.php';
-include_once APP_DIR . '/core/messages.php';
-include_once APP_DIR . '/core/IViewPart.php';
-include_once APP_DIR . '/core/dispatcher.php';
+include_once APP_DIR . '/core/minions.php';
 
 class MinionsAPI
 {
@@ -82,6 +76,12 @@ class MinionsAPI
 
 				// Add the time to the response.
 				$response["time"] = $frame->EstimateTime();
+				$response["images"] =
+				[
+					"full" => $frame->GetPicture("full"),
+					"low" => $frame->GetPicture("low"),
+					"thumb" => $frame->GetPicture("thumb"),
+				];
 				
 				return $response;
 			}
@@ -90,7 +90,7 @@ class MinionsAPI
 		}
 
 		// Get ALL THE FRAMES
-		return Frame::Get($this->dbc, null);
+		return Frame::Get($this->dbc, ['index only' => true]);
 
 	}
 

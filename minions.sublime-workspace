@@ -4,6 +4,50 @@
 		"selected_items":
 		[
 			[
+				"json",
+				"JSON_parse\t( json: string ): any JSON"
+			],
+			[
+				"frames",
+				"framesLeft"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"getEle",
+				"getElementById\t( elementId: DOMString ): Element Document"
+			],
+			[
+				"getE",
+				"getElementById\t( elementId: DOMString ): Element Document"
+			],
+			[
+				"set",
+				"setAttribute\t(config.php)"
+			],
+			[
+				"query",
+				"querySelector"
+			],
+			[
+				"console",
+				"console_log"
+			],
+			[
+				"select",
+				"querySelector\t( selectors: DOMString ): Element Element"
+			],
+			[
+				"onload",
+				"onload\t: EventHandler Window"
+			],
+			[
+				"block",
+				"inline-block\tdisplay"
+			],
+			[
 				"trans",
 				"transition\tproperty"
 			],
@@ -470,63 +514,18 @@
 			[
 				"isnu",
 				"is_numeric"
-			],
-			[
-				"as",
-				"arguments"
-			],
-			[
-				"isi",
-				"is_integer"
-			],
-			[
-				"exc",
-				"excludeEditor"
-			],
-			[
-				"onCli",
-				"onclick\t: EventHandler Document"
-			],
-			[
-				"limit",
-				"resultLimit"
-			],
-			[
-				"exp",
-				"explode"
-			],
-			[
-				"un",
-				"unwantedTags"
-			],
-			[
-				"unwanted",
-				"unwantedText"
-			],
-			[
-				"sugestio",
-				"suggestion-box"
-			],
-			[
-				"contain",
-				"contain-tag-input"
-			],
-			[
-				"contain-tag-",
-				"contain-tag-field"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "minions-web/api/api.php",
+			"file": "minions-web/core/frame.php",
 			"settings":
 			{
-				"buffer_size": 2268,
+				"buffer_size": 1451,
 				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "minions-api.php"
+				"line_ending": "Windows"
 			}
 		},
 		{
@@ -551,7 +550,7 @@
 			"file": "public/js/viewer.js",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 3157,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -560,7 +559,7 @@
 			"file": "public/css/styles.css",
 			"settings":
 			{
-				"buffer_size": 1672,
+				"buffer_size": 1886,
 				"encoding": "UTF-8",
 				"line_ending": "Windows",
 				"name": "styles.css"
@@ -595,9 +594,19 @@
 			"file": "minions-web/pages/view.php",
 			"settings":
 			{
-				"buffer_size": 2436,
+				"buffer_size": 2237,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "noteworthy frames.txt",
+			"settings":
+			{
+				"buffer_size": 176,
+				"encoding": "UTF-8",
+				"line_ending": "Windows",
+				"name": "noteworthy frames"
 			}
 		},
 		{
@@ -613,18 +622,19 @@
 			"file": "minions-web/config.php",
 			"settings":
 			{
-				"buffer_size": 794,
+				"buffer_size": 856,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "minions-web/core/frame.php",
+			"file": "minions-web/api/api.php",
 			"settings":
 			{
-				"buffer_size": 1246,
+				"buffer_size": 2195,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Windows",
+				"name": "minions-api.php"
 			}
 		}
 	],
@@ -851,6 +861,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"href",
+			"\\t",
 			"category",
 			"\n\t",
 			"\"SELECT * from frame where id = ?\"",
@@ -874,34 +886,35 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "minions-web/api/api.php",
+					"file": "minions-web/core/frame.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2268,
+						"buffer_size": 1451,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								646,
-								689
+								1383,
+								1383
 							]
 						],
 						"settings":
 						{
-							"auto_name": "minions-api.php",
 							"git_gutter_is_enabled": true,
-							"syntax": "Packages/PHP/PHP.sublime-syntax"
+							"history_list_is_closing": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 648.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 9,
@@ -950,8 +963,8 @@
 						"selection":
 						[
 							[
-								3044,
-								3050
+								933,
+								933
 							]
 						],
 						"settings":
@@ -961,10 +974,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1602.0,
+						"translation.y": 972.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -973,15 +986,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 0,
+						"buffer_size": 3157,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1683,
+								1683
 							]
 						],
 						"settings":
@@ -990,7 +1003,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 432.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
@@ -1002,15 +1015,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1672,
+						"buffer_size": 1886,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1609,
-								1609
+								1684,
+								1684
 							]
 						],
 						"settings":
@@ -1021,10 +1034,41 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1998.0,
+						"translation.y": 976.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 0,
+					"file": "minions-web/core/frame.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1451,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								564,
+								571
+							]
+						],
+						"settings":
+						{
+							"git_gutter_is_enabled": true,
+							"history_list_is_closing": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
 					"type": "text"
 				}
 			]
@@ -1060,7 +1104,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1090,7 +1134,7 @@
 						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
@@ -1120,7 +1164,7 @@
 						"translation.y": 1566.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
@@ -1129,15 +1173,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2436,
+						"buffer_size": 2237,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2052,
-								1801
+								1056,
+								1056
 							]
 						],
 						"settings":
@@ -1147,7 +1191,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 540.0,
+						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1155,6 +1199,36 @@
 				},
 				{
 					"buffer": 9,
+					"file": "noteworthy frames.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 176,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								176,
+								176
+							]
+						],
+						"settings":
+						{
+							"auto_name": "noteworthy frames",
+							"git_gutter_is_enabled": true,
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
 					"file": "minions-web/pages/errorGeneric.php",
 					"semi_transient": false,
 					"settings":
@@ -1180,24 +1254,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "minions-web/config.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 794,
+						"buffer_size": 856,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								789,
-								789
+								844,
+								844
 							]
 						],
 						"settings":
@@ -1210,35 +1284,34 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
-					"file": "minions-web/core/frame.php",
+					"buffer": 12,
+					"file": "minions-web/api/api.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1246,
+						"buffer_size": 2195,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								631,
-								643
+								90,
+								90
 							]
 						],
 						"settings":
 						{
+							"auto_name": "minions-api.php",
 							"git_gutter_is_enabled": true,
-							"history_list_is_closing": true,
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/PHP/PHP.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 40.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 7,
@@ -1351,7 +1424,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 0,
+	"selected_group": 1,
 	"settings":
 	{
 	},
