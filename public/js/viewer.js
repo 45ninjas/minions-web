@@ -1,23 +1,73 @@
 // Get all the elements
-var currentFrame = null;
+var currentIndex = null;
 
 var framesLeft;
 var framesViewed;
 
-window.onload = function()
+var infoText;
+var questionsText;
+
+Init();
+
+window.onhashchange = CheckHashChange()
+
+function CheckHashChange()
 {
-	Init();
+	console.log("hash has been changed. It's currently " + location.hash);
+	// Looks like the hash has changed, go ahead and see if it's a frame.
+	// If so download the frame's data and display it.
+	
+	// Remove the # from the hash.
+	var index = location.hash.substr(1);
+
+	// Verify it's actually a number above zero.
+	if(+index > 0)
+	{
+		// Make sure the info page is closed first.
+		ShowInfo(false);
+
+		console.log("hash changed, new index is " + index);
+		// Show that frame.
+		ShowFrame(index);
+	}
+}
+
+function ShowInfo(value)
+{
+	// Depending on the value show or hide a div
+	if(value)
+	{
+		infoText.removeAttribute("hidden");
+		questionsText.setAttribute("hidden","yes");
+	}
+	else
+	{	
+		infoText.setAttribute("hidden","yes");
+		questionsText.removeAttribute("hidden");
+	}
 }
 
 function Init()
 {
+	// Download or get the frames.
+	InitFrames();
+
+	// Info and question boxes.
+	infoText = document.getElementById("info");
+	questionsText = document.getElementById("questions");
+	ShowInfo(true);
+
+	// Make the start button do something.
 	var startButton = document.getElementById("startButton");
 	startButton.onclick = function()
 	{
-		Start();
+		// Show the 'next' frame
+		ShowInfo(false);
 		NextFrame();
 	};
 
+	// Make the start buttons actually do something.
+	// BUG: Pressing the emoji does not send event in chrome.
 	var questions = document.getElementById("questions");
 	questions.onclick = function(e)
 	{
@@ -28,8 +78,10 @@ function Init()
 			NextFrame();
 		}
 	}
+}
 
-
+function InitFrames()
+{
 	if(framesLeft == null)
 	{
 		framesLeft = JSON.parse(localStorage.getItem('framesRemaining'));
@@ -37,7 +89,7 @@ function Init()
 		if(!framesLeft)
 		{
 			// Download the list of frames from the sever.
-			fetch("https://tomp.id.au/pages/minions/public/api.php/get/frame")
+			fetch("public/api.php/get/frame")
 			.then(function(response)
 			{
 				return response.json();
@@ -63,25 +115,16 @@ function Init()
 		}
 	}
 }
-function Start()
-{
-	var questions = document.querySelector("#questions");
-	questions.removeAttribute("hidden");
-
-	var info = document.querySelector("#info");
-	info.setAttribute("hidden","yes");
-}
-
 function NextFrame()
 {
-	localStorage.setItem('framesRemaining', JSON.stringify(framesLeft));
 	// Before the current frame is set, send the vote.
 	
 	// Pop the next frame into current frame.
-	currentFrame = framesLeft.pop();
-	ShowFrame(currentFrame);
-
-	
+	currentIndex = framesLeft.pop();
+	localStorage.setItem('framesRemaining', JSON.stringify(framesLeft));
+	location.hash = currentIndex;
+	// FF and Chrome did not automaticly update
+	console.log("changed hash");
 }
 
 function SetFrame(frameData)
@@ -92,6 +135,17 @@ function SetFrame(frameData)
 	picture.querySelector("img").src = frameData['images']['full'];
 
 	document.getElementById('source').innerHTML = frameData['source'] + " - " + frameData['time'];
+
+
+	var indexString = "id:" + frameData['id'];
+	indexString += ", total:" + frameData['votes']['total'];
+	indexString += ", yes:" + frameData['votes']['yes'];
+	indexString += ", no:" + frameData['votes']['no'];
+	indexString += ", not sure:" + frameData['votes']['not sure'];
+
+	document.getElementById('index').innerHTML = "[ "+indexString+" ]";
+
+	location.hash = frameData['id'];
 }
 
 function ShowFrame(index)
@@ -104,7 +158,7 @@ function ShowFrame(index)
 	document.getElementById('source').innerHTML = "";
 
 	// Download the frame data from the server.
-	fetch("https://tomp.id.au/pages/minions/public/api.php/get/frame/" + index)
+	fetch("public/api.php/get/frame/" + index)
 	.then(function(response)
 	{
 		return response.json();

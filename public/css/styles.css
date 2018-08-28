@@ -149,3 +149,9 @@ main.container
 {
 	font-weight: bold;
 }
+
+.debug
+{
+	font-style: monospace;
+	color: gray;
+}

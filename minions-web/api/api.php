@@ -74,13 +74,23 @@ class MinionsAPI
 			{
 				$response = (array)$frame;
 
+				// Move votes into their own array.
+				$total = $response['votes'];
+				$response['votes'] = 
+				[
+					"total"		=> $total,
+					"yes"		=> $response['yes'],
+					"no"		=> $response['no'],
+					"not sure"	=> $response['skip']
+				];
+
 				// Add the time to the response.
 				$response["time"] = $frame->EstimateTime();
 				$response["images"] =
 				[
-					"full" => $frame->GetPicture("full"),
-					"low" => $frame->GetPicture("low"),
-					"thumb" => $frame->GetPicture("thumb"),
+					"full"		=> $frame->GetPicture("full"),
+					"low"		=> $frame->GetPicture("low"),
+					"thumb"		=> $frame->GetPicture("thumb"),
 				];
 				
 				return $response;

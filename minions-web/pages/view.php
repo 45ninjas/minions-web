@@ -15,8 +15,6 @@ class View implements IViewPart
 		Minions::SetTitle("View");
 
 		$this->frame = Minions::OfflineFrame("home");
-
-		Minions::AddToHead("<script type=\"text/javascript\" src=" . Minions::Asset("/js/viewer.js") . "></script>");
 	}
 	public function Content()
 	{
@@ -29,13 +27,15 @@ class View implements IViewPart
 			</picture>
 			<p id="source" class="source" ><?=$this->frame->source?> - <?=$this->frame->EstimateTime()?></p>
 		</div>
-		<div id="questions" class="content" hidden>
+		<div id="questions" class="content">
 			<h2 id="question" class="question">Do you see minions?</h2>
 			<div id="answers" class="buttons">
 				<button class="button" data-vote="yes"><span class="emoji">👍</span>Unquestionably</button>
 				<button class="button" data-vote="not sure"><span class="emoji">🤔</span>Not Obvious</button>
 				<button class="button" data-vote="no"><span class="emoji">👎</span>No</button>
 			</div>
+			<span class="debug" id="index"></span>
+			<span class="debug"><a href="<?=Minions::Asset("/noteworthy frames.txt")?>">Interesting frames</a></span>
 		</div>
 		<div id="info" class="content">
 			<h2 class="question">Help, Please?</h2>
@@ -51,6 +51,7 @@ class View implements IViewPart
 
 			<p>Our bot will be trained with the data gathered from this website. Our goal is to provide a service or solution to identify the presences of minions in an image. The end goal is to use this to automate the moderation of your 'minion memes only' chat room in discord or block minions in your FaceBook feed.</p>
 		</div>
+		<script type="text/javascript" src="<?=Minions::Asset("/js/viewer.js")?>"></script>
 	<?php }
 }
 

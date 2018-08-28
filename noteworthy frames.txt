@@ -1,6 +1,54 @@
-noteworthy frames
+Frames in here I felt where interesting. The original purpose of this file
+was to track some frames that I thought would be interesting to see what the neural
+network does with them.
 
-frame-1302		Silhouette of a minion.
+For example, the first one. It's a 'silhouette of a minion' What kind of influence
+does colour have? If I replaced all black with yellow would it change the outcome?
 
-frame-0382		This is what we are asking people to do. Stare at a
-				computer and press Y or N... Stanley parable anyone?
+However this very quickly (3nd entry) tuned into frames that are interesting to me.
+
+If you found an interesting frame that you think should be here, let me know.
+On Discord, Those45Ninjas#3367 or Those45Ninjas@gmail.com.
+
+
+=== Noteworthy frames ===
+
+302		Silhouette of a minion.
+
+832		Minions are blurry and Gru is sad (a few seconds before you cried.)
+
+621		Gru realizes that counting to three won't work. Next
+		scene he is babysitting at dance class.
+
+382		This is what we are asking people to do. Stare at a
+		computer and press Y or N... Stanley parable anyone?
+
+775		Yes, that's a minion. However it's very unclear. It would be awesome if the
+		neural network can guess this one.
+
+1107	Gru just found out minions are actually yellow, not yellowish orange.
+
+1105	Gru realized he is holding the F***ING MOON!
+
+512		This is just a cool shot. Look at it. The framing, atmosphere and tone.
+		It's so cool in fact. It's now a desktop wallpaper.
+
+149		Another cool shot, What is he looking at? This is NOT a desktop wall
+		paper because it has minions in it.
+
+1156	Jump!!?
+
+1154	The girls have seen Fortnight for the first time. Anges is one of the 10
+		yearolds who plays that junk. Margo, industry experts, just about to laugh
+		their face off at it. Finally, Edith (like	me) is pissed off that fortnight
+		stole all my f***ing cheep ills in PUBG.
+
+595		What is that?
+
+866		Minon is all orange.
+
+153		Only minion heads are seen.
+
+488		That face though, did someone say a rude joke?
+
+743		STOP [added to error offline frames]
